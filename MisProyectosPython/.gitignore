@@ -1,0 +1,36 @@
+# =============================================
+#  .gitignore para proyectos Python - VS Code
+# =============================================
+
+# ----- Python -----
+# Caché de bytecode (se generan automáticamente al correr el código)
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Entornos virtuales (si algún estudiante los llega a crear)
+venv/
+env/
+.venv/
+.env/
+
+# ----- VS Code -----
+# Configuración personal del editor (cada quien tiene la suya)
+.vscode/
+
+# ----- Windows -----
+# Archivos ocultos que Windows crea automáticamente
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# ----- Archivos temporales / del sistema -----
+*.log
+*.tmp
+*.bak
+*.swp
+
+# ----- Excel / datos sensibles -----
+# Descomenta si NO quieres subir los .xlsx de ejemplo
+# *.xlsx
+# *.csv
