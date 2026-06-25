@@ -109,7 +109,7 @@ Como tu repositorio es **privado**, agrégame como colaborador para poder califi
 - Usuario de GitHub: **`SimonP8`** · o invítame al correo **`Simonpelaez.loaiza@gmail.com`**
 
 ### Paso 5 - Entrega del quiz en canvas
-En la plataforma canvas sube un documento donde se evidencia el 
+En la plataforma canvas sube un documento donde se evidencia que se compartió el repositorio con el docente.
 ---
 
 ## 📊 ¿Qué se evalúa?
