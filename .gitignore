@@ -1,0 +1,32 @@
+# =============================================
+#  .gitignore (raíz del repositorio)
+# =============================================
+
+# ----- Soluciones del docente (NO publicar) -----
+# Carpetas y archivos con las claves de respuesta de los quizzes.
+# IMPORTANTE: este repositorio es PÚBLICO; estas reglas evitan subir las respuestas.
+_solucion_docente/
+*_solucion.py
+
+# ----- Python -----
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ----- Entornos virtuales -----
+venv/
+env/
+.venv/
+.env/
+
+# ----- VS Code -----
+.vscode/
+
+# ----- Windows / sistema -----
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.log
+*.tmp
+*.bak
+*.swp
