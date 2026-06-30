@@ -76,5 +76,8 @@ def ejecutar_sistema():
         print(t.obtener_informacion(), "-> impacto:", t.calcular_impacto())
 
 
-# Iniciar el programa
-ejecutar_sistema()
+# Iniciar el programa SOLO cuando se ejecuta este archivo directamente.
+# Asi, otros archivos (como la migracion a la base de datos) pueden IMPORTAR
+# las clases y funciones sin que se ejecute toda la demo.
+if __name__ == "__main__":
+    ejecutar_sistema()
