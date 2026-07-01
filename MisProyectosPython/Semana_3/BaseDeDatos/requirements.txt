@@ -1,0 +1,3 @@
+# Unica dependencia: el cliente de Prisma para Python.
+# Trae la herramienta de linea de comandos `prisma` (NO necesitas instalar Node.js).
+prisma

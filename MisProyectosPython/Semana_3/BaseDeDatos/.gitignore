@@ -1,0 +1,9 @@
+# La base de datos se genera con `prisma db push`; no se sube al repo.
+transacciones.db
+transacciones.db-journal
+
+# Entorno virtual (cada quien lo crea en su maquina)
+.venv/
+
+# Cache de Python
+__pycache__/
