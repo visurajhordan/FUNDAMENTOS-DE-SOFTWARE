@@ -116,12 +116,14 @@ def leer_empleados_excel(nombre_archivo):
 # 5) RETO EXTRA: ¡CREA TU PROPIA FUNCION!
 #    Inventa una funcion util que trabaje con la lista de empleados.
 #    Elige UNA de estas ideas (o propon la tuya) y programala aqui abajo:
+
 #       * salario_promedio(empleados): promedio de salario_base
 #       * empleados_por_ciudad(empleados, ciudad): cuantos hay en esa ciudad
 #       * empleado_mejor_pagado(empleados): el de mayor calcular_pago()
+
 #    Documentala con un docstring y luego llamala dentro de ejecutar_quiz().
 # =====================================================================
-def mi_funcion(empleados):
+def salario_promedio(empleados):
     # TODO: escribe aqui tu propia logica
     pass
 
@@ -136,7 +138,7 @@ def ejecutar_quiz():
         print(empleado.obtener_informacion(), "-> pago:", empleado.calcular_pago())
 
     # TODO (reto): descomenta y adapta la siguiente linea para usar TU funcion
-    # print("\nMi resultado:", mi_funcion(empleados))
+    print("\nSalario promedio:", salario_promedio(empleados))
 
 
 # Iniciar el programa
