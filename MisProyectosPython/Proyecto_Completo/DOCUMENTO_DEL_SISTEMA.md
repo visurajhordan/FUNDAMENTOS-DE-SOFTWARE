@@ -242,13 +242,43 @@ con los formularios de creación y edición operativos.
 | `POST` con `monto: -5000` | Rechazo `400` | ✅ `400` |
 | `POST` con código `T001` (duplicado) | Rechazo `400` | ✅ `400` |
 | `GET /999` (no existe) | `404` | ✅ `404` |
+| Crear `T005` y recargar la página | El dato sobrevive | ✅ Persiste |
 
-En los tres casos el servidor respondió con el código correcto y **siguió funcionando**, que es
-justamente el propósito del manejo de excepciones.
+En los tres primeros casos el servidor respondió con el código correcto y **siguió funcionando**,
+que es justamente el propósito del manejo de excepciones.
 
-> Se recomienda adjuntar capturas de pantalla de: la tabla en el navegador, la respuesta JSON del
-> backend, el mensaje de error al intentar un monto negativo, y el contenedor activo en Docker
-> Desktop.
+---
+
+### Capturas de pantalla
+
+Las siguientes capturas documentan una sesión completa del sistema, en orden cronológico.
+
+**Figura 1 — Interfaz del CRUD.** Estado inicial: las cuatro transacciones migradas en la Semana 3,
+renderizadas por React tras consultar la API.
+
+![Interfaz del CRUD con las cuatro transacciones](capturas/tabla.png)
+
+**Figura 2 — Respuesta JSON del backend.** La misma información, consultada directamente al
+servidor Flask en el puerto 5000. Demuestra que el backend es un proceso independiente que expone
+JSON, sin intervención del frontend.
+
+![Respuesta JSON de la API](capturas/json.png)
+
+**Figura 3 — Validación de negocio.** Al intentar crear una transacción con `monto: -5000` el
+sistema la rechaza con un mensaje claro y **la tabla no cambia**. Es el mismo blindaje del
+encapsulamiento de la Semana 3, ahora aplicado en el controlador con `try/except`.
+
+![Rechazo de un monto negativo](capturas/error.png)
+
+**Figura 4 — Base de datos en Docker.** El contenedor `empresa` corriendo con la imagen `mysql:8`
+y el puerto `3306` publicado. La base de datos no está instalada en el sistema operativo.
+
+![Contenedor MySQL activo en Docker Desktop](capturas/docker.png)
+
+**Figura 5 — Persistencia.** Tras crear la transacción `T005` y recargar la página con F5, el
+registro sigue presente: los datos viven en MySQL, no en la memoria del navegador.
+
+![La transacción T005 persiste tras recargar](capturas/persistencia.png)
 
 ---
 
