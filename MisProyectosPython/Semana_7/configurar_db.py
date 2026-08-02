@@ -15,11 +15,12 @@ cursor.execute("PRAGMA foreign_keys = ON;")
 
 # 2) TABLA usuarios  (donde vive la identidad)
 #    id_usuario = PK: numero unico e irrepetible para cada fila
+#    email = UNIQUE NOT NULL: no puede repetirse ni quedar vacio
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS usuarios (
     id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre     TEXT NOT NULL,
-    email      TEXT,
+    email      TEXT UNIQUE NOT NULL,
     nit        TEXT
 );
 """)
