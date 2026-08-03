@@ -5,8 +5,19 @@
 # Ejecutar:  python practica_crud.py
 
 import sqlite3
+import sys
 
 RUTA = "quantum_wallet.db"
+
+# Con "python practica_crud.py --pausas" el script se detiene entre operaciones
+# para poder tomar las capturas del antes y despues en el SQLite Viewer.
+PAUSAS = "--pausas" in sys.argv
+
+
+def pausa(mensaje):
+    """Detiene la ejecucion solo si se pidio el modo --pausas."""
+    if PAUSAS:
+        input(f"\n>>> {mensaje} (abre el SQLite Viewer, toma la captura y pulsa ENTER)")
 
 
 def crear_tabla_contactos():
@@ -30,6 +41,9 @@ def crear_contactos():
     """Inserta 5 contactos para el usuario 1."""
     con = sqlite3.connect(RUTA)
     con.execute("DELETE FROM contactos;")   # limpio para poder repetir el ejercicio
+    # AUTOINCREMENT recuerda el ultimo id usado, asi que sin esto la segunda
+    # corrida empezaria en 6 y el Update/Delete sobre los ids 1 y 2 fallarian.
+    con.execute("DELETE FROM sqlite_sequence WHERE name = 'contactos';")
     contactos = [
         ("Mama", "3001112233", 1),
         ("Casa", "6041234567", 1),
@@ -65,30 +79,34 @@ def leer_contactos(id_usuario):
 def actualizar_apodo(id_contacto, nuevo_apodo):
     """Cambia el apodo de UN contacto. El WHERE evita cambiarlos todos."""
     con = sqlite3.connect(RUTA)
-    con.execute(
+    cur = con.execute(
         "UPDATE contactos SET apodo = ? WHERE id_contacto = ?;",
         (nuevo_apodo, id_contacto),
     )
     con.commit()
+    filas = cur.rowcount   # cuantas filas cambio realmente
     con.close()
-    print(f"U - Update: el contacto {id_contacto} ahora se llama '{nuevo_apodo}'.")
+    print(f"U - Update: el contacto {id_contacto} ahora se llama '{nuevo_apodo}'. ({filas} fila modificada)")
 
 
 # ---------- D : DELETE ----------
 def borrar_contacto(id_contacto):
     """Elimina UN contacto por su id (nunca toda la tabla)."""
     con = sqlite3.connect(RUTA)
-    con.execute("DELETE FROM contactos WHERE id_contacto = ?;", (id_contacto,))
+    cur = con.execute("DELETE FROM contactos WHERE id_contacto = ?;", (id_contacto,))
     con.commit()
+    filas = cur.rowcount   # cuantas filas se borraron realmente
     con.close()
-    print(f"D - Delete: contacto {id_contacto} eliminado.")
+    print(f"D - Delete: contacto {id_contacto} eliminado. ({filas} fila borrada)")
 
 
 if __name__ == "__main__":
     crear_tabla_contactos()
     crear_contactos()                  # C
+    pausa("CAPTURA 1 (ANTES): los 5 contactos recien creados")
     leer_contactos(1)                  # R
     actualizar_apodo(1, "Mamita")      # U
+    pausa("CAPTURA 2 (DESPUES): el contacto 1 ya se llama 'Mamita'")
     borrar_contacto(2)                 # D
     print("\nEstado final de la tabla contactos:")
     leer_contactos(1)                  # R de nuevo, para ver el resultado

@@ -1,0 +1,24 @@
+Actividad 7-2 - Operaciones CRUD en Quantum Core
+Log de consola de: python practica_crud.py
+
+C - Create: 5 contactos insertados para el usuario 1.
+R - Read: contactos del usuario 1:
+    (1, 'Mama', '3001112233')
+    (2, 'Casa', '6041234567')
+    (3, 'Trabajo', '3009998877')
+    (4, 'Mejor amigo', '3005556644')
+    (5, 'Emergencias', '123')
+U - Update: el contacto 1 ahora se llama 'Mamita'. (1 fila modificada)
+D - Delete: contacto 2 eliminado. (1 fila borrada)
+
+Estado final de la tabla contactos:
+R - Read: contactos del usuario 1:
+    (1, 'Mamita', '3001112233')
+    (3, 'Trabajo', '3009998877')
+    (4, 'Mejor amigo', '3005556644')
+    (5, 'Emergencias', '123')
+
+Lectura del resultado:
+- El contacto 1 pasa de 'Mama' a 'Mamita'  -> Update correcto.
+- El contacto 2 ('Casa') desaparece de la lista -> Delete correcto.
+- Los contactos 3, 4 y 5 quedan intactos -> el WHERE protegio al resto de la tabla.

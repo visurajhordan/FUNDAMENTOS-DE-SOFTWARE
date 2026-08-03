@@ -52,6 +52,12 @@ python configurar_db.py
 python practica_crud.py
 ```
 
+Para las capturas de **antes y después**, ejecútalo con pausas: se detiene después del
+Create y después del Update para que puedas abrir el SQLite Viewer y capturar cada estado.
+```bash
+python practica_crud.py --pausas
+```
+
 Salida esperada (resumida):
 ```
 C - Create: 5 contactos insertados para el usuario 1.
